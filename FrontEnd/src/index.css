@@ -1,0 +1,33 @@
+:root {
+    --cor--back: #F8F8F8;
+    --cor--azul1: #00205B;
+    --cor--detalhes:#0088A8;
+    --cor--button:#EA6852;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "brandon-grotesque", sans-serif;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+li{
+    list-style: none;
+}
