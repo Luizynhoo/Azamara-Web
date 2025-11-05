@@ -4,7 +4,11 @@ import bannerMobile from "../../assets/banner-Mobile-azamara.webp";
 import "./Home.css";
 import CruiseForm from "../../components/motor"
 import CruiseOffersSection from "../../components/promocoes"
-import CruiseSections from "../../components/sections/sections"
+import AzamaraSection from "../../components/infos";
+import RoyalCruiseSection from "../../components/CruiseCarousel"
+import DestinyCruiseSection from "../../components/DestinyCarousel"
+import Footer from "../../components/Footer"
+import StickyFooter from "../../components/StickyFooter"
 
 export default function Home() {
   return (
@@ -28,9 +32,21 @@ export default function Home() {
       <section>
         <CruiseOffersSection />
       </section>
-      <section>
-        <CruiseSections />
-      </section>
+      
+      <div className="CruiserCarousel">
+            <RoyalCruiseSection/>
+      </div>
+
+      <div className="DestintCarousel">
+        <DestinyCruiseSection />
+      </div>
+
+      <div className="infos">
+        <AzamaraSection/>
+      </div>
+
+      <Footer/>
+      <StickyFooter />
     </>
   );
 }

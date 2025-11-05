@@ -1,7 +1,7 @@
   .offers-section {
       background: var(--cor--back);
       padding: 60px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: "brandon-grotesque", sans-serif;
   }
 
   .promo-banner {
@@ -61,12 +61,13 @@
   .carousel-track {
       display: flex;
       transition: transform 0.4s ease;
-      gap: 24px;
+      gap: 15px;
   }
 
   .offer-card {
-      min-width: 100%;
-      max-width: 400px;
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: none;
       margin: 0 auto;
       background: white;
       border-radius: 12px;
@@ -106,7 +107,7 @@
   }
 
   .card-content {
-      padding: 24px;
+      padding: 50px;
   }
 
   .card-content h3 {
@@ -260,46 +261,13 @@
       right: 0;
   }
 
-  .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 32px;
-  }
-
-  .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #ddd;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-  }
-
-  .dot.active {
-      background: var(--cor--detalhes);
-      width: 32px;
-      border-radius: 6px;
-  }
-
-  @media (min-width: 768px) {
-      .carousel-track {
-          gap: 24px;
-      }
-
-      .offer-card {
-          min-width: calc(50% - 12px);
-      }
-  }
-
-  @media (min-width: 1200px) {
-      .offer-card {
-          min-width: calc(33.333% - 16px);
-      }
-  }
-
   @media (max-width: 768px) {
+
+      .carousel-track {
+          align-items: stretch;
+          gap: 0px;
+      }
+
       .section-header h2 {
           font-size: 1.8rem;
       }
@@ -319,6 +287,23 @@
 
       .price {
           font-size: 1.6rem;
+      }
+
+      .price-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .price-row {
+          display: flex;
+          justify-content: center;
+          flex-direction: column-reverse;
+          align-items: center;
+      }
+
+      .card-content {
+          padding: 25px;
       }
   }
 

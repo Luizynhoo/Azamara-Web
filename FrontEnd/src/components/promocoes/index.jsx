@@ -1,9 +1,8 @@
 import { Calendar, Ship, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-import "./promo.css"
+import { useEffect, useState } from "react";
+import "./promo.css";
 
-const cruiseOffers = [
-  {
+const cruiseOffers = [  {
     id: 1,
     image: "https://images.unsplash.com/photo-1578670812003-60745e2c2ea9?w=600&h=400&fit=crop",
     category: "CARIBE",
@@ -19,7 +18,7 @@ const cruiseOffers = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1594386838082-6c6b6b4c5b3e?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1578670812003-60745e2c2ea9?w=600&h=400&fit=crop",
     category: "CARIBE",
     title: "4 NIGHT EASTERN CARIBBEAN CRUISE",
     departure: "Qui., 28 Janeiro 2027",
@@ -33,7 +32,7 @@ const cruiseOffers = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1555781907-c23df686b50f?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1578670812003-60745e2c2ea9?w=600&h=400&fit=crop",
     category: "CARIBE",
     title: "3 NIGHT PERFECT DAY GETAWAY CRUISE",
     departure: "Sex., 20 Novembro 2026",
@@ -47,7 +46,7 @@ const cruiseOffers = [
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1545522579-ea2ecd1f4ecc?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1578670812003-60745e2c2ea9?w=600&h=400&fit=crop",
     category: "SHORT CARIBE",
     title: "3 Night Bahamas & Perfect Day Cruise",
     departure: "Sex., 6 Março 2026",
@@ -58,18 +57,49 @@ const cruiseOffers = [
     oldPrice: "R$ 523,45",
     discount: "SEM ENTRADA",
     taxes: "Sem entrada e em até 10x sem juros"
-  }
-];
+  }];
 
 export default function CruiseOffersSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(getVisibleCount());
+
+  // calcula quantas cards aparecem por vez baseado na largura
+  function getVisibleCount() {
+    if (typeof window === "undefined") return 3;
+    const w = window.innerWidth;
+    if (w < 768) return 1;    
+    if (w < 1024) return 2;     
+    return 3;                   
+  }
+
+  // atualiza visibleCount no resize
+  useEffect(() => {
+    const onResize = () => {
+      const newVisible = getVisibleCount();
+      setVisibleCount((prev) => {
+        if (prev === newVisible) return prev;
+        return newVisible;
+      });
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // recalcula páginas e ajusta currentPage se necessário
+  const totalPages = Math.max(1, Math.ceil(cruiseOffers.length / visibleCount));
+
+  useEffect(() => {
+    if (currentPage > totalPages - 1) {
+      setCurrentPage(totalPages - 1);
+    }
+  }, [visibleCount, totalPages, currentPage]);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % cruiseOffers.length);
+    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : prev));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + cruiseOffers.length) % cruiseOffers.length);
+    setCurrentPage((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   return (
@@ -86,14 +116,31 @@ export default function CruiseOffersSection() {
         </div>
 
         <div className="carousel-wrapper">
-          <button className="carousel-btn prev" onClick={prevSlide} aria-label="Anterior">
+          <button
+            className={`carousel-btn prev ${currentPage === 0 ? "disabled" : ""}`}
+            onClick={prevSlide}
+            disabled={currentPage === 0}
+            aria-label="Anterior"
+          >
             <ChevronLeft />
           </button>
 
           <div className="carousel-container">
-            <div className="carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            {/* track: cada "page" equivale a 100% da área visível */}
+            <div
+              className="carousel-track"
+              style={{
+                transform: `translateX(-${currentPage * 100}%)`,
+                /* para suavizar um pouco: */
+                transition: "transform 0.5s ease"
+              }}
+            >
               {cruiseOffers.map((offer) => (
-                <div key={offer.id} className="offer-card">
+                <div
+                  key={offer.id}
+                  className="offer-card"
+                  style={{ flex: `0 0 ${100 / visibleCount}%` }} // cada card ocupa 1/visibleCount
+                >
                   <div className="card-image">
                     <img src={offer.image} alt={offer.title} />
                     <span className="category-badge">{offer.category}</span>
@@ -134,7 +181,6 @@ export default function CruiseOffersSection() {
                           <div className="discount-badge">
                             <span className="discount-label">MELHOR PREÇO</span>
                             <span className="discount-value">{offer.discount}</span>
-                            <span className="old-price">era {offer.oldPrice}</span>
                           </div>
                         </div>
                         <span className="per-person">MÉDIA POR PESSOA</span>
@@ -148,18 +194,23 @@ export default function CruiseOffersSection() {
             </div>
           </div>
 
-          <button className="carousel-btn next" onClick={nextSlide} aria-label="Próximo">
+          <button
+            className={`carousel-btn next ${currentPage === totalPages - 1 ? "disabled" : ""}`}
+            onClick={nextSlide}
+            disabled={currentPage === totalPages - 1}
+            aria-label="Próximo"
+          >
             <ChevronRight />
           </button>
         </div>
 
         <div className="carousel-dots">
-          {cruiseOffers.map((_, index) => (
+          {Array.from({ length: totalPages }).map((_, idx) => (
             <button
-              key={index}
-              className={`dot ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Ir para oferta ${index + 1}`}
+              key={idx}
+              className={`dot ${idx === currentPage ? "active" : ""}`}
+              onClick={() => setCurrentPage(idx)}
+              aria-label={`Ir para página ${idx + 1}`}
             />
           ))}
         </div>
