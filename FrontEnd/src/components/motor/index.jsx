@@ -1,89 +1,94 @@
 import { useState } from "react";
-import { MapPin, Anchor, Clock, Calendar, Users } from "lucide-react";
+import { MapPin, Anchor, Calendar, ChevronDown } from "lucide-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./motor.css";
 
 export default function CruiseForm() {
-    const [formData, setFormData] = useState({
-        destino: "",
-        porto: "",
-        duracao: "",
-        data: "",
-        passageiros: 1,
-    });
+  const [formData, setFormData] = useState({
+    destino: "",
+    navio: "",
+    data: null,
+  });
 
-    const handleChange = (field, value) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
-    };
+  const handleChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
 
-    const handleSubmit = () => {
-        console.log("Dados:", formData);
-        alert("Orçamento solicitado!");
-    };
+  const handleSubmit = () => {
+    console.log("Orçamento:", formData);
+    alert("Buscando saídas...");
+  };
 
-    return (
-        <div className="motor-wrapper">
-            <div className="motor">
-
-                {/* DESTINO */}
-                <div className="motor-item">
-                    <MapPin className="motor-icon" />
-                    <div className="motor-field">
-                        <label className="motor-label">VIAJANDO PARA</label>
-                        <select
-                            value={formData.destino}
-                            onChange={(e) => handleChange("destino", e.target.value)}
-                            className="motor-select"
-                        >
-                            <option value="">Qualquer Destino</option>
-                            <option value="caribe">Caribe</option>
-                            <option value="europa">Europa</option>
-                            <option value="alaska">Alaska</option>
-                            <option value="bahamas">Bahamas</option>
-                        </select>
-                    </div>
-                </div>
-
-                {/* NAVIOS */}
-                <div className="motor-item">
-                    <Anchor className="motor-icon" />
-                    <div className="motor-field">
-                        <label className="motor-label">NAVIO</label>
-                        <select
-                            value={formData.duracao}
-                            onChange={(e) => handleChange("duracao", e.target.value)}
-                            className="motor-select"
-                        >
-                            <option value="">Selecione o seu Navio</option>
-                            <option value="Pursuit">Azamara Pursuit</option>
-                            <option value="Journey">Azamara Journey</option>
-                            <option value="Onward">Azamara Onward</option>
-                            <option value="Quest">Azamara Quest</option>
-                        </select>
-                    </div>
-                </div>
-
-                {/* DATA */}
-                <div className="motor-item">
-                    <Calendar className="motor-icon" />
-                    <div className="motor-field">
-                        <label className="motor-label">SAÍDA EM</label>
-                        <input
-                            type="text"
-                            placeholder="dd/mm/aaaa"
-                            value={formData.data}
-                            onChange={(e) => handleChange("data", e.target.value)}
-                            className="motor-input"
-                        />
-                    </div>
-                </div>
-
-
-                {/* BOTÃO */}
-                <button className="motor-button" onClick={handleSubmit}>
-                    Solicitar Orçamento
-                </button>
-
+  return (
+    <div className="motor-wrapper">
+      <div className="motor">
+        {/* DESTINO */}
+        <div className="motor-item">
+          <MapPin className="motor-icon" />
+          <div className="motor-field">
+            <label className="motor-label">VIAJANDO PARA</label>
+            <div className="custom-select">
+              <select
+                value={formData.destino}
+                onChange={(e) => handleChange("destino", e.target.value)}
+              >
+                <option value="">Qualquer Destino</option>
+                <option value="caribe">Caribe</option>
+                <option value="europa">Europa</option>
+                <option value="alaska">Alaska</option>
+                <option value="bahamas">Bahamas</option>
+              </select>
+              <ChevronDown className="select-arrow" />
             </div>
+          </div>
         </div>
-    );
+
+        {/* NAVIO */}
+        <div className="motor-item">
+          <Anchor className="motor-icon" />
+          <div className="motor-field">
+            <label className="motor-label">NAVIO</label>
+            <div className="custom-select">
+              <select
+                value={formData.navio}
+                onChange={(e) => handleChange("navio", e.target.value)}
+              >
+                <option value="">Selecione o seu Navio</option>
+                <option value="pursuit">Azamara Pursuit</option>
+                <option value="journey">Azamara Journey</option>
+                <option value="onward">Azamara Onward</option>
+                <option value="quest">Azamara Quest</option>
+              </select>
+              <ChevronDown className="select-arrow" />
+            </div>
+          </div>
+        </div>
+
+        {/* DATA */}
+        <div className="motor-item">
+          <Calendar className="motor-icon" />
+          <div className="motor-field">
+            <label className="motor-label">SAÍDA EM</label>
+            <div className="datepicker-wrapper">
+              <DatePicker
+                selected={formData.data}
+                onChange={(date) => handleChange("data", date)}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="dd/mm/aaaa"
+                className="motor-datepicker"
+                popperClassName="custom-datepicker-popper"
+                calendarClassName="custom-calendar"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* BOTÃO */}
+        <button className="motor-button" onClick={handleSubmit}>
+          Ver Saídas
+        </button>
+      </div>
+    </div>
+  );
 }

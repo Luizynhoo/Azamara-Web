@@ -1,92 +1,220 @@
 .motor-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: -121px;
-    position: relative;
-    z-index: 99;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -140px;
+  position: relative;
+  z-index: 99;
 }
 
 .motor {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    background: #fff;
-    padding: 25px 35px;
-    border-radius: 12px;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: #fff;
+  padding: 28px 38px;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
+  max-width: 1100px;
 }
 
 .motor-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  min-width: 200px;
 }
 
 .motor-icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    margin-top: 2px;
-    color: var(--cor--detalhes);
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--cor--detalhes);
 }
 
 .motor-field {
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-width: 0; 
+  min-width: 0;
 }
 
 .motor-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #777;
+  color: #666;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: normal;    
-  word-break: break-word;  
-  line-height: 1.2;
-  margin-bottom: 4px;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
 }
 
-.motor-item select,
-.motor-item input {
-    border: none;
-    font-size: 15px;
-    font-weight: 500;
-    outline: none;
-    color: #0077b6;
-    cursor: pointer;
-    background: transparent;
+/* SELECT ESTILIZADO */
+.custom-select {
+  position: relative;
 }
 
+.custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0077b6;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px 28px 8px 0;
+  cursor: pointer;
+  border-bottom: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.custom-select select:focus {
+  border-bottom-color: #0077b6;
+  color: #005a8c;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #aaa;
+  pointer-events: none;
+  transition: color 0.3s;
+}
+
+.custom-select select:focus+.select-arrow {
+  color: #0077b6;
+}
+
+/* DATEPICKER */
+.datepicker-wrapper {
+  position: relative;
+}
+
+.motor-datepicker {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0077b6;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 2px solid #e0e0e0;
+  transition: all 0.3s;
+}
+
+.motor-datepicker:focus {
+  border-bottom-color: #0077b6;
+  color: #005a8c;
+}
+
+.motor-datepicker::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
+
+/* BOTÃO */
 .motor-button {
-    background: var(--cor--button);
-    padding: 14px 28px;
-    color: #fff;
-    border-radius: 32px;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .3s;
+  background: var(--cor--button);
+  padding: 14px 32px;
+  color: #fff;
+  border-radius: 32px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 140px;
 }
 
 .motor-button:hover {
-    transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
 }
 
-/* MOBILE */
-@media (max-width: 640px) {
+/* CALENDÁRIO PERSONALIZADO */
+.custom-datepicker-popper {
+  z-index: 1000 !important;
+}
+
+.custom-calendar {
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15) !important;
+  font-family: "brandon-grotesque", sans-serif !important;
+  overflow: hidden;
+}
+
+.react-datepicker__header {
+  background: #00205B !important;
+  border-bottom: none !important;
+  padding: 12px !important;
+}
+
+.react-datepicker__current-month {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  margin: 4px !important;
+  border-radius: 50% !important;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__day:hover {
+  background: #0088A8 !important;
+  color: white !important;
+}
+
+.react-datepicker__day--selected {
+  background: var(--cor--button) !important;
+  color: white !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background: #ff6b6b !important;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+  .motor-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -400px;
+    position: relative;
+    z-index: 99;
+  }
+
   .motor {
     flex-direction: column;
-    align-items: stretch;
+    padding: 24px;
+    gap: 20px;
   }
+
   .motor-item {
     width: 100%;
   }
+
   .motor-button {
     width: 100%;
   }
+
+
 }

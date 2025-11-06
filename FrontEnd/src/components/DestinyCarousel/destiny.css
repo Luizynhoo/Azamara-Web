@@ -1,249 +1,242 @@
-.rc-section {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    margin-top: 20px;
-    font-family: "brandon-grotesque", sans-serif;
-    color: white;
+.destiny-section {
+  position: relative;
+  min-height: 70vh;
+  overflow: hidden;
+  font-family: "brandon-grotesque", sans-serif;
+  color: white;
+  margin: 20px 0;
 }
 
 .rc-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, #0088A8, #00205B),
-        url('https://www.royalcaribbean.com/content/dam/royal/ship-class/hero/utopia-of-the-seas-hero.jpg') center/cover no-repeat;
-    z-index: -2;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #00205B, #0088A8),
+              url('https://www.royalcaribbean.com/content/dam/royal/ship-class/hero/utopia-of-the-seas-hero.jpg') center/cover no-repeat;
+  z-index: -2;
 }
 
-.rc-container {
-    position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 40px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1;
+.destiny-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  z-index: 1;
 }
 
-.rc-full-content {
-    display: flex;
+.rc-logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.rc-logo-img {
+  height: 70px;
+  filter: brightness(0) invert(1);
+}
+
+.destiny-full-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 .rc-content {
-    max-width: 450px;
+  flex: 1;
+  max-width: 500px;
+
 }
 
 .rc-title {
-    font-size: 4.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin: 0 0 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.rc-highlight {
-    color: #00d1ff;
-    font-style: italic;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .rc-description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    opacity: 0.95;
-    margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
-/* Carrossel */
+/* === CARROSSEL === */
 .rc-carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  flex: 2;
+  min-width: 0;
+  overflow: hidden;
 }
 
-.rc-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.95);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.rc-carousel-btn:hover {
-    background: white;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.rc-prev {
-    left: -25px;
-}
-
-.rc-next {
-    right: -25px;
-}
-
-.rc-carousel-container {
-    flex: 1;
-    overflow: hidden;
-    border-radius: 16px;
-}
 
 .rc-carousel-track {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  width: fit-content;
 }
 
 .rc-carousel-card {
-    min-width: 300px;
-    height: 520px;
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 0 300px;
+  height: 520px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .rc-carousel-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px);
 }
 
 .rc-card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .rc-card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 40px 20px 30px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
-    text-align: center;
-    transition: background 0.3s ease;
-}
-
-.rc-carousel-card:hover .rc-card-overlay {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.4));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 20px 30px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  text-align: center;
 }
 
 .rc-card-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin: 0 0 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .rc-card-port {
-    font-size: 1rem;
-    margin: 0 0 16px;
-    opacity: 0.9;
-    font-weight: 500;
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 500;
 }
 
-.rc-card-button {
-    background: white;
-    color: #002b5c;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+/* === BOTÕES === */
+.rc-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.95);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.rc-card-button:hover {
-    background: #00d1ff;
-    color: white;
-    transform: scale(1.05);
+.rc-carousel-btn:hover:not(:disabled) {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Responsivo */
+.rc-carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rc-prev { left: 10px; }
+.rc-next { right: 10px; }
+
+/* === RESPONSIVO === */
 @media (max-width: 1024px) {
-    .rc-title {
-        font-size: 3.5rem;
-    }
+  .destiny-full-content {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
 
-    .rc-carousel-card {
-        min-width: 280px;
-        height: 480px;
-    }
+  .rc-title {
+    font-size: 3.5rem;
+  }
+
+  .rc-carousel-card {
+    flex: 0 0 280px;
+    height: 480px;
+  }
 }
 
 @media (max-width: 768px) {
-    .rc-container {
-        padding: 40px 15px;
-    }
+  .destiny-container {
+    padding: 40px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .rc-title {
-        font-size: 2.8rem;
-    }
+  .rc-title {
+    font-size: 2.8rem;
+  }
 
-    .rc-description {
-        font-size: 1.1rem;
-    }
+  .rc-description {
+    font-size: 1.1rem;
+  }
 
-    .rc-carousel-card {
-        min-width: 250px;
-        height: 420px;
-    }
+  .rc-content{
+    text-align: center;
+  }
 
-    .rc-prev {
-        left: -20px;
-    }
+  .rc-carousel-card {
+    flex: 0 0 250px;
+    height: 420px;
+  }
 
-    .rc-next {
-        right: -20px;
-    }
+  .rc-carousel-btn {
+    width: 45px;
+    height: 45px;
+  }
 
-    .rc-carousel-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 24px;
-    }
+  .rc-prev { left: 5px; }
+  .rc-next { right: 5px; }
+}
+
+@media (max-width: 640px) {
+  .rc-title {
+    font-size: 2.3rem;
+  }
+
+  .rc-carousel-card {
+    flex: 0 0 calc(100% - 40px);
+    max-width: 350px;
+    height: 600px;
+    margin: 0 auto;
+  }
+
+  .rc-card-title {
+    font-size: 1.3rem;
+  }
+
+  .rc-carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 480px) {
-    .rc-title {
-        font-size: 2.2rem;
-    }
+  .rc-title {
+    font-size: 2rem;
+  }
 
-    .rc-carousel-card {
-        min-width: 220px;
-        height: 380px;
-    }
-
-    .rc-card-title {
-        font-size: 1.3rem;
-    }
-
-    .rc-card-button {
-        padding: 8px 20px;
-        font-size: 0.8rem;
-    }
+  .rc-carousel-card {
+   height: 600px;
+  }
 }

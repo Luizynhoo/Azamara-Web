@@ -12,6 +12,10 @@
     font-family: "brandon-grotesque", sans-serif;
 }
 
+body{
+    background: var(--cor--back);
+}
+
 html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

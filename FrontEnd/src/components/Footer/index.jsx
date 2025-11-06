@@ -36,9 +36,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>© 2025 R11 Travel. Todos os Direitos Reservados.</p>
         <div className="footer-social">
-          <a href="#" aria-label="Facebook"><FaFacebookF /></a>
           <a href="#" aria-label="Instagram"><FaInstagram /></a>
-          <a href="#" aria-label="TikTok"><FaTiktok /></a>
           <a href="mailto:contato@shoppingdecruzeiros.com.br" aria-label="Email"><FaEnvelope /></a>
         </div>
       </div>
@@ -47,3 +45,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+//Pegar os arquivos para colocar os redirecionamentos

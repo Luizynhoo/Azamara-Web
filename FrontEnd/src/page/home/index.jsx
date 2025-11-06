@@ -24,7 +24,7 @@ export default function Home() {
         <div className="hero-content">
           {/* <h1>Cruzeiros Royal Caribbean</h1>
           <p>Momentos inesquecíveis a bordo dos maiores navios do mundo</p> */}
-          <button>Solicitar Orçamento</button>
+          {/* <button>Solicitar Orçamento</button> */}
         </div>
 
         <CruiseForm />
