@@ -89,9 +89,6 @@
   transition: transform 0.3s ease;
 }
 
-.rc-carousel-card:hover {
-  transform: translateY(-8px);
-}
 
 .rc-card-image {
   width: 100%;

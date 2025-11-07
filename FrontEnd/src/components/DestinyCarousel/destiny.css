@@ -89,9 +89,6 @@
   transition: transform 0.3s ease;
 }
 
-.rc-carousel-card:hover {
-  transform: translateY(-8px);
-}
 
 .rc-card-image {
   width: 100%;
@@ -145,7 +142,6 @@
 
 .rc-carousel-btn:hover:not(:disabled) {
   background: white;
-  transform: translateY(-50%) scale(1.1);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
