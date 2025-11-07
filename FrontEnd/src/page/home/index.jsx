@@ -1,14 +1,18 @@
+import React from 'react';
 import Navbar from "../../components/navbar";
 import bannerDesk from "../../assets/Azamara-banner-desk.webp";
 import bannerMobile from "../../assets/banner-Mobile-azamara.webp";
-import "./Home.css";
-import CruiseForm from "../../components/motor"
-import CruiseOffersSection from "../../components/promocoes"
+import CruiseForm from "../../components/motor";
+import CruiseOffersSection from "../../components/promocoes";
 import AzamaraSection from "../../components/infos";
-import RoyalCruiseSection from "../../components/CruiseCarousel"
-import DestinyCruiseSection from "../../components/DestinyCarousel"
-import Footer from "../../components/Footer"
-import StickyFooter from "../../components/StickyFooter"
+import Footer from "../../components/Footer";
+import StickyFooter from "../../components/StickyFooter";
+
+// Importando os novos carrosséis
+import ShipsSection from "../../components/Carousel/ShipsSection.jsx";
+import DestinationsSection from "../../components/Carousel/DestinationSection.jsx";
+
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -29,23 +33,16 @@ export default function Home() {
 
         <CruiseForm />
       </section>
-      <section>
-        <CruiseOffersSection />
-      </section>
+
+      <CruiseOffersSection />
       
-      <div className="CruiserCarousel">
-            <RoyalCruiseSection/>
-      </div>
+      <ShipsSection />
+      
+      <DestinationsSection />
 
-      <div className="DestintCarousel">
-        <DestinyCruiseSection />
-      </div>
+      <AzamaraSection />
 
-      <div className="infos">
-        <AzamaraSection/>
-      </div>
-
-      <Footer/>
+      <Footer />
       <StickyFooter />
     </>
   );

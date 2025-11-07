@@ -1,0 +1,261 @@
+ /* ===== SEÇÃO BASE ===== */
+ .cruise-cruises-section {
+     position: relative;
+     min-height: 100vh;
+     padding: 80px 0;
+     color: white;
+     overflow: hidden;
+ }
+
+ .cruise-cruises-section-bg {
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(135deg, #00205B 0%, #0088A8 100%);
+     z-index: 0;
+     margin: 40px 0;
+ }
+
+ .cruise-cruises-container {
+     position: relative;
+     max-width: 1400px;
+     margin: 0 auto;
+     padding: 0 40px;
+     z-index: 1;
+ }
+
+ /* ===== LOGO ===== */
+ .cruise-cruises-logo {
+     text-align: center;
+     margin-bottom: 60px;
+ }
+
+ /* ===== LAYOUTS ===== */
+ .cruise-content-cruises-layout {
+     display: grid;
+     gap: 20px;
+     align-items: center;
+ }
+
+ .cruise-content-cruises-layout.left-text {
+     grid-template-columns: 1fr 2fr;
+ }
+
+ .cruise-content-cruises-layout.right-text {
+     grid-template-columns: 2fr 1fr;
+ }
+
+ .cruise-text-cruises-block {
+     padding: 20px 0;
+ }
+
+ .cruise-cruises-title {
+     font-size: clamp(2.5rem, 5vw, 4.5rem);
+     font-weight: 900;
+     line-height: 1.1;
+     margin-bottom: 24px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+ }
+
+ .cruise-cruises-description {
+     font-size: clamp(1rem, 1.5vw, 1.2rem);
+     line-height: 1.7;
+     opacity: 0.95;
+     max-width: 500px;
+ }
+
+ img.carousel-cruises-card-image {
+    max-height: 550px;
+ }  
+
+ /* ===== CARROSSEL ===== */
+ .carousel-cruises-wrapper {
+     width: 100%;
+     position: relative;
+     max-width: 870px;
+ }
+
+ .carousel-cruises-viewport {
+     position: relative;
+     overflow: hidden;
+     width: 100%;
+     display: block;
+ }
+
+ .carousel-cruises-container {
+     overflow: hidden;
+     border-radius: 12px;
+ }
+
+ .carousel-cruises-track {
+     display: flex;
+     align-items: flex-start;
+     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+     will-change: transform;
+     padding: 10px 0;
+ }
+
+ .carousel-cruises-card {
+     height: 520px;
+     min-width: 200px;
+     border-radius: 16px;
+     overflow: hidden;
+     position: relative;
+     cursor: pointer;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+ }
+
+ .carousel-cruises-card:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+ }
+
+ .carousel-card-cruises-image {
+     width: 100%;
+     height: 60%;
+     object-fit: cover;
+     display: block;
+ }
+
+ .carousel-cruises-card:hover .carousel-card-cruises-image {
+     transform: scale(1.05);
+ }
+
+ .carousel-card-cruises-overlay {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     padding: 28px 16px;
+     background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+     text-align: center;
+ }
+
+ .carousel-card-cruises-title {
+     font-size: 1.5rem;
+     font-weight: 800;
+     margin: 0;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+ }
+
+ .carousel-card-cruises-subtitle {
+     font-size: 0.95rem;
+     margin: 8px 0 0;
+     opacity: 0.9;
+ }
+
+ /* ===== NAVEGAÇÃO ===== */
+ .carousel-cruises-nav {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     background: rgba(255, 255, 255, 0.95);
+     border: none;
+     width: 44px;
+     height: 44px;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     z-index: 20;
+     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+     cursor: pointer;
+     color: #00205B;
+ }
+
+ .carousel-cruises-nav:hover:not(:disabled) {
+     background: white;
+     transform: translateY(-50%) scale(1.1);
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+ }
+
+ .carousel-cruises-nav:disabled {
+     opacity: 0.35;
+     cursor: not-allowed;
+ }
+
+ .carousel-cruises-nav-prev {
+     left: 12px;
+ }      
+
+ .carousel-cruises-nav-next {
+     right: 12px;
+ }
+
+ /* ===== RESPONSIVIDADE ===== */
+ @media (max-width: 1024px) {
+
+    .cruise-content-cruises-layout.left-text, .cruise-content-layout.right-text {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+     .cruise-text-cruises-block {
+         text-align: center;
+         max-width: 600px;
+         margin: 0 auto;
+     }
+
+     .cruise-cruises-description {
+         margin: 0 auto;
+     }
+
+     .carousel-cruises-card {
+         flex: 0 0 280px;
+         height: 420px;
+     }
+ }
+
+ @media (max-width: 768px) {
+     .cruise-cruises-container {
+         padding: 0 24px;
+     }
+
+     .cruise-content-cruises-layout {
+         gap: 40px;
+     }
+
+     .carousel-cruises-wrapper {
+         padding: 0 50px;
+     }
+
+     .carousel-cruises-card {
+         height: 520px;
+     }
+
+     .carousel-cruises-nav {
+         width: 40px;
+         height: 40px;
+     }
+
+     .carousel-cruises-track {
+         align-items: center;
+     }
+ }
+
+ @media (max-width: 640px) {
+     .cruise-cruises-section {
+         padding: 60px 0;
+     }  
+
+     .cruise-cruises-container {
+         padding: 0 16px;
+     }
+
+     .carousel-cruises-wrapper {
+         padding: 0 45px;
+     }
+
+     .carousel-cruises-card {
+         flex: 0 0 min(90vw, 340px);
+         height: 520px;
+     }
+
+     .carousel-cruises-nav {
+         width: 38px;
+         height: 38px;
+     }
+ }
