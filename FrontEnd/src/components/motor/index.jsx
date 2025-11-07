@@ -23,7 +23,6 @@ export default function CruiseForm() {
   return (
     <div className="motor-wrapper">
       <div className="motor">
-        {/* DESTINO */}
         <div className="motor-item">
           <MapPin className="motor-icon" />
           <div className="motor-field">
