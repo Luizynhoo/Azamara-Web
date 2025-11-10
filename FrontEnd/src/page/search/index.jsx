@@ -1,14 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Ship, Anchor, Calendar, Users, MapPin } from 'lucide-react';
+import ItineraryPopup from '../../components/Promocoes/funcionalidades/ItineraryPopup';
+import SidebarForm from '../../components/Promocoes/funcionalidades/Sidebarform';
 import './search.css';
+
 import Navbar from '../../components/navbar';
 import Footer from '../../components/Footer';
-import { getCruises } from '../../services/getCruises';
+import { useCruiseOffers } from './../../hooks/useCruiseOffers';
+
 
 export default function CruiseBooking() {
 
 
-    const [cruises, setCruises] = useState([]);
+    const { offers } = useCruiseOffers();
+    const [selectedOffer, setSelectedOffer] = useState(null);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [popupOpen, setPopupOpen] = useState(false);
     const [filters, setFilters] = useState({
         destination: 'Todos os Destinos',
         port: 'Todos os Portos',
@@ -19,14 +26,22 @@ export default function CruiseBooking() {
     });
 
 
-    useEffect(() => {
-        getCruises().then(setCruises);
-    }, []);
+    const openBudget = (offer) => {
+        setSelectedOffer(offer);
+        setSidebarOpen(true);
+        setPopupOpen(false);
+    };
 
+    const openDetails = (offer) => {
+        setSelectedOffer(offer);
+        setPopupOpen(true);
+        setSidebarOpen(false);
+    };
 
-    console.log(cruises);
-
-
+    const closePopup = () => {
+        setPopupOpen(false);
+        setSelectedOffer(null);
+    };
 
     return (
         <>
@@ -92,12 +107,12 @@ export default function CruiseBooking() {
                         </div>
                     </div>
 
-                    {cruises.map((cruise, index) => (
+                    {offers.map((offer, index) => (
                         <div className="cruise-card" key={index}>
                             <div className="cruise-grid">
                                 <div className="cruise-image-container">
                                     <img
-                                        src={cruise.ImageBackground}
+                                        src={offer.image}
                                         alt="Destino do Cruzeiro"
                                         className="cruise-image"
                                     />
@@ -106,16 +121,16 @@ export default function CruiseBooking() {
                                 <div className="cruise-info">
                                     <div className="cruise-content">
                                         <div className="cruise-details">
-                                            <h2 className="cruise-title">{cruise.ProductName}</h2>
+                                            <h2 className="cruise-title">{offer.title}</h2>
 
                                             <div className="cruise-metadata">
                                                 <div className="metadata-item">
                                                     <span className="metadata-label">Partindo De:</span>
-                                                    <span className="metadata-value">{cruise.EmbarkPortName}</span>
+                                                    <span className="metadata-value">{offer.EmbarkPortName}</span>
                                                 </div>
                                                 <div className="metadata-item">
                                                     <span className="metadata-label">A bordo do:</span>
-                                                    <span className="metadata-value">Azamara {cruise.ShipName}</span>
+                                                    <span className="metadata-value">Azamara {offer.ship}</span>
                                                 </div>
                                             </div>
 
@@ -125,13 +140,13 @@ export default function CruiseBooking() {
                                                     <div>
                                                         <div className="itinerary-title">Itinerário</div>
                                                         <div className="itinerary-text">
-                                                            {cruise.ItineraryPortNames}
+                                                            {offer.ports}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <button className="explore-button">
+                                            <button className="explore-button" onClick={() => openDetails(offer)}>
                                                 Explore este itinerário
                                             </button>
                                         </div>
@@ -139,24 +154,20 @@ export default function CruiseBooking() {
                                         <div className="price-section">
                                             <div className="price-label">A partir de*</div>
                                             <div className="price-value">
-                                                R$ {cruise.TotalCruiseFare.toLocaleString('pt-BR')}
+                                                {offer.price}
                                             </div>
                                             <div className="price-description">Tarifa p/ Hóspede</div>
-                                            <div className="price-installments">em até 10x s/ juros</div>
+                                            <div className="price-installments">{offer.installments}</div>
 
-                                            <button className="booking-button">Solicitar Orçamento</button>
+                                            <button className="booking-button" onClick={() => openBudget(offer)}>Solicitar Orçamento</button>
 
                                             <div className="booking-details">
                                                 <div className="booking-date">
-                                                    Data de Embarque{" "}
-                                                    {new Date(cruise.EmbarkDate).toLocaleDateString("pt-BR", {
-                                                        day: "2-digit",
-                                                        month: "2-digit",
-                                                        year: "numeric",
-                                                    })}
+                                                {offer.departure}
+                                                    
                                                 </div>
                                                 <div className="booking-duration">
-                                                    Duração: {cruise.Duration} noites
+                                                    Duração: {offer.nights} noites
                                                 </div>
                                                 <div className="booking-taxes">
                                                     *+ Impostos, taxas e despesas portuárias
@@ -169,6 +180,23 @@ export default function CruiseBooking() {
                         </div>
                     ))}
 
+
+                    {selectedOffer && popupOpen && (
+                        <ItineraryPopup
+                            offer={selectedOffer}
+                            onClose={closePopup}
+                            onBudget={openBudget}
+                        />
+                    )}
+
+                    <SidebarForm
+                        sidebarOpen={sidebarOpen}
+                        setSidebarOpen={(v) => {
+                            setSidebarOpen(v);
+                            if (!v) setPopupOpen(false);
+                        }}
+                        offer={selectedOffer}
+                    />
 
                 </div>
                 <Footer />

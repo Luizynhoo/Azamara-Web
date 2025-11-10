@@ -51,6 +51,7 @@ export function useCruiseOffers() {
           taxes: "Sem entrada e em até 10x sem juros",
           ports: o.ItineraryPortNames,
           itinerary: o.Itinerary,
+          nights: o.Duration
         }));
 
         setOffers(mapped);
