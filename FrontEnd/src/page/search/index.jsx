@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Ship, Calendar, Users, MapPin } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import CruiseForm from '../../components/Motor/index'
 import ItineraryPopup from '../../components/Promocoes/funcionalidades/ItineraryPopup';
 import SidebarForm from '../../components/Promocoes/funcionalidades/Sidebarform';
 import './search.css';
@@ -12,7 +13,7 @@ import { useCruiseOffers } from './../../hooks/useCruiseOffers';
 export default function CruiseBooking() {
 
     const { allOffers, loading, error } = useCruiseOffers();
-    
+
     const [selectedOffer, setSelectedOffer] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [popupOpen, setPopupOpen] = useState(false);
@@ -23,8 +24,8 @@ export default function CruiseBooking() {
 
     const [filters, setFilters] = useState({
         destination: filter?.destino || 'Todos os Destinos',
-        dateRange: filter?.dataInicio && filter?.dataFim 
-            ? `${new Date(filter.dataInicio).toLocaleDateString('pt-BR')} - ${new Date(filter.dataFim).toLocaleDateString('pt-BR')}` 
+        dateRange: filter?.dataInicio && filter?.dataFim
+            ? `${new Date(filter.dataInicio).toLocaleDateString('pt-BR')} - ${new Date(filter.dataFim).toLocaleDateString('pt-BR')}`
             : 'Qualquer Data',
         ships: filter?.navio || 'Todos os Navios',
         guests: '2',
@@ -143,8 +144,13 @@ export default function CruiseBooking() {
 
     return (
         <>
+
             <main className='search-main'>
                 <Navbar customClass="navbar-cruise" />
+
+                <br></br>
+                <CruiseForm />
+
                 <div className="cruise-container">
                     {/* Filtros */}
                     <div className="filters-card">
@@ -182,26 +188,26 @@ export default function CruiseBooking() {
                                     <div className="filter-value">{filters.guests}</div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="sort-section">
-                            <label className="sort-label">ORDENAR POR:</label>
-                            <select
-                                className="sort-select"
-                                value={filters.sortBy}
-                                onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
-                            >
-                                <option>Menor Preço</option>
-                                <option>Maior Preço</option>
-                                <option>Duração</option>
-                                <option>Data de Partida</option>
-                            </select>
-                        </div>
-
-                        <div style={{ textAlign: 'center', marginTop: '10px', color: '#666' }}>
-                            Mostrando {displayedOffers.length} de {sortedOffers.length} ofertas
+                            <div className="sort-section">
+                                <label className="sort-label">ORDENAR POR:</label>
+                                <select
+                                    className="sort-select"
+                                    value={filters.sortBy}
+                                    onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
+                                >
+                                    <option>Menor Preço</option>
+                                    <option>Maior Preço</option>
+                                    <option>Duração</option>
+                                    <option>Data de Partida</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+
+                    <div style={{ textAlign: 'center', marginTop: '1px', color: '#666'  }}>
+                            Mostrando {displayedOffers.length} de {sortedOffers.length} ofertas
+                        </div>
 
                     {displayedOffers.length === 0 ? (
                         <div style={{ textAlign: 'center', padding: '50px' }}>

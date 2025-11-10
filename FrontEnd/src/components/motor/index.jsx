@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { MapPin, Anchor, Calendar, ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./motor.css";
 
 export default function CruiseForm() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     destino: "",
     navio: "",
     dataFim: null,
     dataInicio: null,
   });
+  
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const minDate = new Date();
   const maxDate = new Date("2028-12-31");
@@ -30,7 +32,12 @@ export default function CruiseForm() {
       destino: formData.destino || "",
     };
 
-    navigate('/resultSearch', { state: { searchData: obj } });
+
+    if (location.pathname === "/resultSearch") {
+      navigate(0);
+    }
+
+    navigate("/resultSearch", { state: { searchData: obj } });
   };
 
   return (
