@@ -1,29 +1,20 @@
 import { useState, useEffect } from "react";
 import { getCruises } from "../services/getCruises";
+import { formatCurrency, formatDate } from '../utils/FormarterFields';
+
+import paginate from "../utils/Paginate";
+
+
 
 export function useCruiseOffers() {
+
+
+
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return new Intl.DateTimeFormat("pt-BR", {
-      weekday: "short",
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    })
-      .format(date)
-      .replace(/^\w/, (c) => c.toUpperCase())
-      .replace(/\.$/, "");
-  };
-
-  const formatCurrency = (value) =>
-    value.toLocaleString("pt-BR", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
+  const [page, setPage] = useState(1);
+  const pageSize = 6;
 
   useEffect(() => {
     const fetchOffers = async () => {
@@ -35,9 +26,10 @@ export function useCruiseOffers() {
         const valid = data
           .filter((o) => o.Available === "OK" && new Date(o.EmbarkDate) > now)
           .sort((a, b) => a.TotalCruiseFare - b.TotalCruiseFare)
-          .slice(0, 6);
 
-        const mapped = valid.map((o) => ({
+        const paginated = paginate(valid, page, pageSize);
+
+        const mapped = paginated.map((o) => ({
           id: o.ProductId,
           image: o.ImageBackground,
           category: o.Destination.toUpperCase(),
@@ -54,7 +46,14 @@ export function useCruiseOffers() {
           nights: o.Duration
         }));
 
-        setOffers(mapped);
+        setOffers((prev) => {
+          const combined = [...prev, ...mapped];
+          const unique = combined.filter(
+            (v, i, self) => i === self.findIndex((t) => t.id === v.id)
+          );
+          return unique;
+        });
+
       } catch (err) {
         console.error("Erro ao carregar ofertas:", err);
         setError("Não foi possível carregar as ofertas.");
@@ -64,7 +63,7 @@ export function useCruiseOffers() {
     };
 
     fetchOffers();
-  }, []);
+  }, [page]);
 
-  return { offers, loading, error };
+  return { offers, loading, error, setPage };
 }

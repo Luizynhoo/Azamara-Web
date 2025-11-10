@@ -12,7 +12,7 @@ import { useCruiseOffers } from './../../hooks/useCruiseOffers';
 export default function CruiseBooking() {
 
 
-    const { offers } = useCruiseOffers();
+    const { offers,setPage  } = useCruiseOffers();
     const [selectedOffer, setSelectedOffer] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [popupOpen, setPopupOpen] = useState(false);
@@ -42,6 +42,10 @@ export default function CruiseBooking() {
         setPopupOpen(false);
         setSelectedOffer(null);
     };
+
+    const seeMore = () => {
+        setPage((prevPage) => prevPage + 1);
+    }
 
     return (
         <>
@@ -180,6 +184,12 @@ export default function CruiseBooking() {
                         </div>
                     ))}
 
+                    
+                    <div className="see-more-container">
+                        <button className="see-more-button" onClick={seeMore}>
+                            Ver Mais Ofertas
+                        </button>
+                    </div>
 
                     {selectedOffer && popupOpen && (
                         <ItineraryPopup
@@ -197,6 +207,7 @@ export default function CruiseBooking() {
                         }}
                         offer={selectedOffer}
                     />
+                    
 
                 </div>
                 <Footer />
