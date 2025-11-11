@@ -11,6 +11,7 @@ import ResultItems from '../../components/ResultPage/ResultItems/index';
 import ResultFilter from '../../components/ResultPage/ResultFilter/index';
 import { useCruiseFilters } from './../../hooks/useCruiseFilter';
 import CruiseFormV2 from '../../components/Motorv2';
+import PromoBanner from '../../components/ResultPage/PromoBanner';
 
 export default function CruiseBooking({ customClass = "" }) {
 
@@ -18,15 +19,15 @@ export default function CruiseBooking({ customClass = "" }) {
     const { state } = useLocation();
     const filter = state?.searchData;
 
-    
-  const {
-    filters,
-    setFilters,
-    displayedOffers,
-    seeMore,
-    hasMore,
-    sortedOffers,
-  } = useCruiseFilters(allOffers, filter);
+
+    const {
+        filters,
+        setFilters,
+        displayedOffers,
+        seeMore,
+        hasMore,
+        sortedOffers,
+    } = useCruiseFilters(allOffers, filter);
 
     if (loading) {
         return (
@@ -71,11 +72,18 @@ export default function CruiseBooking({ customClass = "" }) {
                         <CruiseFormV2 />
                     </div>
 
+                    <PromoBanner
+                        title="Promoção Novo Horizonte"
+                        subtitle1="+ Até R$ 500 de crédito a bordo"
+                        subtitle2=""
+                        endDate="2025-12-08T23:59:59"
+                    />
+
                     {/* Filtros */}
                     <div className="filter-container">
                         <ResultFilter filters={filters} setFilters={setFilters} />
                     </div>
-                    
+
 
                     <div style={{ textAlign: 'center', marginTop: '1px', color: '#666' }}>
                         Mostrando {displayedOffers.length} de {sortedOffers.length} ofertas
@@ -88,7 +96,7 @@ export default function CruiseBooking({ customClass = "" }) {
                         </div>
                     ) : (
                         displayedOffers.map((offer, index) => (
-                            <ResultItems index={index} key={offer.code} offer={offer}/>
+                            <ResultItems index={index} key={offer.code} offer={offer} />
                         ))
                     )}
 

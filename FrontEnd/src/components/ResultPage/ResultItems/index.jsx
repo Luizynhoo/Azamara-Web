@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { MapPin } from 'lucide-react';
-import ItineraryPopup from '../../Promocoes/funcionalidades/ItineraryPopup';
+import ItineraryPopup from '../../promocoes/funcionalidades/ItineraryPopup';
 import SidebarForm from '../../Promocoes/funcionalidades/Sidebarform';
 import './resultItems.css';
 
-export default function ResultItems({offer, index}) {
+export default function ResultItems({ offer, index }) {
     const [selectedOffer, setSelectedOffer] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [popupOpen, setPopupOpen] = useState(false);
@@ -34,6 +34,9 @@ export default function ResultItems({offer, index}) {
                         alt="Destino do Cruzeiro"
                         className="cruise-image"
                     />
+                    <div className="booking-duration">
+                        Duração: {offer.nights} noites
+                    </div>
                 </div>
 
                 <div className="cruise-info">
@@ -43,26 +46,14 @@ export default function ResultItems({offer, index}) {
 
                             <div className="cruise-metadata">
                                 <div className="metadata-item">
-                                    <span className="metadata-label">Partindo De:</span>
-                                    <span className="metadata-value">{offer.EmbarkPortName}</span>
+                                    <span className="metadata-label">Data:</span>
+                                    <span className="metadata-value">{offer.departure}</span>
                                 </div>
                                 <div className="metadata-item">
                                     <span className="metadata-label">A bordo do:</span>
                                     <span className="metadata-value">
-                                        {offer.ship.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}
+                                        Azamara {offer.ship.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}
                                     </span>
-                                </div>
-                            </div>
-
-                            <div className="itinerary-box">
-                                <div className="itinerary-content">
-                                    <MapPin className="itinerary-icon" />
-                                    <div>
-                                        <div className="itinerary-title">Itinerário</div>
-                                        <div className="itinerary-text">
-                                            {offer.ports}
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -72,26 +63,25 @@ export default function ResultItems({offer, index}) {
                         </div>
 
                         <div className="price-section">
-                            <div className="price-label">A partir de*</div>
-                            <div className="price-value">
-                                {offer.price}
+                            <div className="infos-price">
+
+                                <div className="price-label">A partir de*</div>
+                                <div className="price-value">
+                                    {offer.price}
+                                </div>
+                                <div className="price-description">Tarifa p/ Hóspede</div>
+                                <div className="price-installments">{offer.installments} {offer.priceX}</div>
                             </div>
-                            <div className="price-description">Tarifa p/ Hóspede</div>
-                            <div className="price-installments">{offer.installments}</div>
+                            <div className="price-button">
 
-                            <button className="booking-button" onClick={() => openBudget(offer)}>
-                                Solicitar Orçamento
-                            </button>
+                                <button className="booking-button" onClick={() => openBudget(offer)}>
+                                    Solicitar Orçamento
+                                </button>
 
-                            <div className="booking-details">
-                                <div className="booking-date">
-                                    {offer.departure}
-                                </div>
-                                <div className="booking-duration">
-                                    Duração: {offer.nights} noites
-                                </div>
-                                <div className="booking-taxes">
-                                    *Impostos, taxas e despesas portuárias não inclusas
+                                <div className="booking-details">
+                                    <div className="booking-taxes">
+                                        *Impostos, taxas e despesas portuárias não inclusas
+                                    </div>
                                 </div>
                             </div>
                         </div>

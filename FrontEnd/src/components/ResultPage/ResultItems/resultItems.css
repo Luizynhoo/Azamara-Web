@@ -1,4 +1,4 @@
-.cruise-card{
+.cruise-card {
   max-width: 1280px;
   margin: 0 auto;
   background-color: white;
@@ -45,6 +45,19 @@
   border-radius: 4px;
 }
 
+.booking-duration {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #002b5b;
+  color: #fff;
+  padding: 10px 16px;
+  font-size: .85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+}
+
 .logo-content {
   display: flex;
   align-items: center;
@@ -67,6 +80,12 @@
 /* Informações do Cruzeiro */
 .cruise-info {
   padding: 24px;
+}
+
+.price-section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .cruise-content {
@@ -120,38 +139,6 @@
   text-transform: capitalize !important;
 }
 
-.itinerary-box {
-  background-color: #f9fafb;
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.itinerary-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.itinerary-icon {
-  width: 20px;
-  height: 20px;
-  color: #2563eb;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
-.itinerary-title {
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 4px;
-}
-
-.itinerary-text {
-  font-size: 14px;
-  color: #6b7280;
-  margin-top: 4px;
-}
 
 .explore-button {
   background-color: #2563eb;
@@ -173,6 +160,10 @@
   text-align: right;
   margin-left: 24px;
   min-width: 200px;
+}
+
+.price-button {
+  margin-top: 50px;
 }
 
 @media (max-width: 767px) {
