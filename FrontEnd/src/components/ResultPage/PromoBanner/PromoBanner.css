@@ -1,0 +1,50 @@
+.promo-banner-lp {
+  text-align: center;
+  padding: 24px 12px;
+  background: transparent;
+}
+
+.promo-title {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  
+  background: linear-gradient(90deg, #0B2D48, #009CE1, #0B2D48);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: gradientMove 4s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.promo-sub {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #002b5b;
+  margin-top: 6px;
+}
+
+.promo-divider {
+  width: 160px;
+  border-bottom: 1px solid #b9c3d1;
+  margin: 12px auto;
+}
+
+.promo-timer {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #0d1e42;
+}
