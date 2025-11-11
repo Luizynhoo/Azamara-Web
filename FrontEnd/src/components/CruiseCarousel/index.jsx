@@ -12,13 +12,41 @@ const RoyalCruiseSection = () => {
   const [visibleCount, setVisibleCount] = useState(3);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
+  const [selectedShip, setSelectedShip] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cruiseShips = [
-    { title: 'Azamara Pursuit', port: '', image: PursuitImg, url: '' },
-    { title: 'Azamara Journey', port: '', image: JourneyImg, url: '' },
-    { title: 'Azamara Onward', port: '', image: OnwardImg, url: '' },
-    { title: 'Azamara Quest', port: '', image: QuestImg, url: '' },
+    {
+      title: 'Azamara Pursuit',
+      port: '', image: PursuitImg,
+      description: 'O Azamara Pursuit oferece uma experiência íntima com capacidade para 690 hóspedes. Projetado para explorar destinos únicos, combina luxo e conforto em um ambiente acolhedor.',
+    },
+    {
+      title: 'Azamara Journey',
+      port: '', image: JourneyImg,
+      description: 'Um clássico renovado, o Azamara Journey é perfeito para cruzeiros prolongados em portos exclusivos. Seu design elegante e serviço personalizado encantam os viajantes mais exigentes.',
+    },
+    {
+      title: 'Azamara Onward',
+      port: '', image: OnwardImg,
+      description: 'O mais novo da frota, o Azamara Onward eleva o padrão com espaços modernos, gastronomia refinada e itinerários que permitem estadias mais longas nos destinos.',
+    },
+    {
+      title: 'Azamara Quest',
+      port: '', image: QuestImg,
+      description: 'Conhecido por sua sofisticação, o Azamara Quest oferece suítes espaçosas, spas de alto nível e experiências culturais imersivas em cada parada.',
+    },
   ];
+
+  const openModal = (ship) => {
+    setSelectedShip(ship);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedShip(null);
+  };
 
   const totalCards = cruiseShips.length;
 
@@ -94,7 +122,8 @@ const RoyalCruiseSection = () => {
                   <div
                     key={index}
                     className="rc-carousel-card"
-                  // onClick={() => window.open(ship.url, '_blank')}
+                    onClick={() => openModal(ship)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <img src={ship.image} alt={ship.title} className="rc-card-image" />
                     <div className="rc-card-overlay">
@@ -116,6 +145,27 @@ const RoyalCruiseSection = () => {
           </div>
         </div>
       </div>
+
+
+      {isModalOpen && selectedShip && (
+        <div className="rc-modal-overlay" onClick={closeModal}>
+          <div className="rc-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="rc-modal-close" onClick={closeModal}>×</button>
+
+            <div className="rc-modal-body">
+              <img
+                src={selectedShip.image}
+                alt={selectedShip.title}
+                className="rc-modal-image"
+              />
+              <div className="rc-modal-text">
+                <h2>{selectedShip.title}</h2>
+                <p>{selectedShip.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

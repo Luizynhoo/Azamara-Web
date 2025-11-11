@@ -1,4 +1,3 @@
-// src/components/cruise/useCarousel.js
 import { useState, useEffect, useRef, useCallback } from "react";
 
 export function useCarousel(offers) {

@@ -1,4 +1,3 @@
-// src/components/cruise/OfferCard.jsx
 import { Calendar, Ship } from "lucide-react";
 
 export default function OfferCard({ offer, onDetails, onBudget }) {

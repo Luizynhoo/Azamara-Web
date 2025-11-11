@@ -15,7 +15,6 @@ const [popupOpen, setPopupOpen] = useState(false);
 
 const [limitedOffers, setLimitedOffers] = useState([]);
 
-// sempre que allOffers mudar, pegamos só as 6 primeiras
 useEffect(() => {
   if (allOffers.length > 0) {
     setLimitedOffers(allOffers.slice(0, 6));

@@ -33,7 +33,7 @@ export function useCruiseOffers() {
           price: `R$ ${formatCurrency(o.TotalCruiseFare)}`,
           priceValue: o.TotalCruiseFare, // Para ordenação
           priceX: `R$ ${formatCurrency(o.TotalCruiseFare / 10)}`,
-          installments: `Em 10x de R$ ${formatCurrency(o.TotalCruiseFare / 10)}`,
+          installments: "Em 10x de",
           discount: "SEM ENTRADA",
           taxes: "Sem entrada e em até 10x sem juros",
           ports: o.ItineraryPortNames,
@@ -51,7 +51,7 @@ export function useCruiseOffers() {
     };
 
     fetchOffers();
-  }, []); // Executa apenas uma vez
+  }, []); 
 
   return { allOffers, loading, error };
 }

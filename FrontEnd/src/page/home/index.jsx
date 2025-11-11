@@ -2,6 +2,7 @@ import Navbar from "../../components/navbar";
 import "./Home.css";
 import CruiseForm from "../../components/motor"
 import CruiseOffersSection from "../../components/promocoes"
+import EuropeOffers from "../../components/promocoes/EuropeOffer/EuropeOffers";
 import AzamaraSection from "../../components/infos";
 import RoyalCruiseSection from "../../components/CruiseCarousel"
 import DestinyCruiseSection from "../../components/DestinyCarousel"
@@ -32,20 +33,24 @@ export default function Home() {
       <section>
         <CruiseOffersSection />
       </section>
-      
+
       <div className="CruiserCarousel">
-            <RoyalCruiseSection/>
+        <RoyalCruiseSection />
       </div>
+
+      <section>
+        <EuropeOffers />
+      </section>
 
       <div className="DestintCarousel">
         <DestinyCruiseSection />
       </div>
 
       <div className="infos">
-        <AzamaraSection/>
+        <AzamaraSection />
       </div>
 
-      <Footer/>
+      <Footer />
       <StickyFooter />
     </>
   );
