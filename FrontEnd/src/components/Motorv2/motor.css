@@ -213,6 +213,12 @@ input.motor-datepicker:focus {
   overflow-y: auto;
 }
 
+.select-options.open-up {
+  top: auto;
+  bottom: 100%;
+  transform-origin: bottom;
+}
+
 .select-options li {
   padding: 10px 14px;
   cursor: pointer;
