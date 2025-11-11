@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MapPin } from 'lucide-react';
 import ItineraryPopup from '../../Promocoes/funcionalidades/ItineraryPopup';
 import SidebarForm from '../../Promocoes/funcionalidades/Sidebarform';
