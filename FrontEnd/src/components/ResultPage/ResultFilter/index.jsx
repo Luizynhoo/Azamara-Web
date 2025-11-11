@@ -1,5 +1,5 @@
 import { Ship, Calendar, Users, MapPin } from 'lucide-react';
-
+import './resultFilter.css';
 export default function ResultFilter({ filters, setFilters }) {
     return (
         <div className="filters-card">

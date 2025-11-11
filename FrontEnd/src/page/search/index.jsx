@@ -1,7 +1,6 @@
 
 
 import { useLocation } from 'react-router-dom';
-import CruiseForm from '../../components/Motor/index'
 
 import './search.css';
 
@@ -11,6 +10,7 @@ import { useCruiseOffers } from './../../hooks/useCruiseOffers';
 import ResultItems from '../../components/ResultPage/ResultItems/index';
 import ResultFilter from '../../components/ResultPage/ResultFilter/index';
 import { useCruiseFilters } from './../../hooks/useCruiseFilter';
+import CruiseFormV2 from '../../components/Motorv2';
 
 export default function CruiseBooking({ customClass = "" }) {
 
@@ -68,7 +68,7 @@ export default function CruiseBooking({ customClass = "" }) {
                 <div className="cruise-container">
 
                     <div className={`motor-result ${customClass}`}>
-                        <CruiseForm />
+                        <CruiseFormV2 />
                     </div>
 
                     {/* Filtros */}

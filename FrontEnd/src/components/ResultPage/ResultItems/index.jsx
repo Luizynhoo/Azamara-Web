@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin } from 'lucide-react';
 import ItineraryPopup from '../../Promocoes/funcionalidades/ItineraryPopup';
 import SidebarForm from '../../Promocoes/funcionalidades/Sidebarform';
+import './resultItems.css';
 
 export default function ResultItems({offer, index}) {
     const [selectedOffer, setSelectedOffer] = useState(null);
