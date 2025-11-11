@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MapPin } from 'lucide-react';
 import ItineraryPopup from '../../promocoes/funcionalidades/ItineraryPopup';
 import SidebarForm from '../../Promocoes/funcionalidades/Sidebarform';
 import './resultItems.css';
@@ -50,10 +49,14 @@ export default function ResultItems({ offer, index }) {
                                     <span className="metadata-value">{offer.departure}</span>
                                 </div>
                                 <div className="metadata-item">
-                                    <span className="metadata-label">A bordo do:</span>
+                                    <span className="metadata-label">A bordo do </span>
                                     <span className="metadata-value">
                                         Azamara {offer.ship.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}
                                     </span>
+                                </div>
+                                <div className="metadata-item">
+                                    <span className="metadata-label">Porto de Embarque:</span>
+                                    <span className="metadata-value">{offer.EmbarkPortName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}</span>
                                 </div>
                             </div>
 
@@ -65,11 +68,11 @@ export default function ResultItems({ offer, index }) {
                         <div className="price-section">
                             <div className="infos-price">
 
-                                <div className="price-label">A partir de*</div>
+                                <div className="price-label">A partir de</div>
                                 <div className="price-value">
                                     {offer.price}
                                 </div>
-                                <div className="price-description">Tarifa p/ Hóspede</div>
+                                <div className="price-description">Tarifa p/ Hóspede*</div>
                                 <div className="price-installments">{offer.installments} {offer.priceX}</div>
                             </div>
                             <div className="price-button">
@@ -80,7 +83,7 @@ export default function ResultItems({ offer, index }) {
 
                                 <div className="booking-details">
                                     <div className="booking-taxes">
-                                        *Impostos, taxas e despesas portuárias não inclusas
+                                        *Impostos, taxas e despesas portuárias inclusas
                                     </div>
                                 </div>
                             </div>

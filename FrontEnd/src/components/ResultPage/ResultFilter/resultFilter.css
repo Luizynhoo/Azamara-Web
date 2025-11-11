@@ -32,7 +32,7 @@
 .filter-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
 
 .filter-icon {
@@ -47,6 +47,7 @@
 }
 
 .filter-label {
+
   font-size: 12px;
   color: #6b7280;
 }

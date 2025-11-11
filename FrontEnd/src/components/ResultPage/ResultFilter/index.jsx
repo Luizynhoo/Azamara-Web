@@ -25,7 +25,7 @@ export default function ResultFilter({ filters, setFilters }) {
                     <div className="filter-content">
                         <div className="filter-label">Navios</div>
                         <div className="filter-value">
-                            {filters.ships === 'Todos os Navios' ? 'Todos os Navios' : `Azamara ${filters.ships}`}
+                            {filters.ships === 'Todos os Navios' ? 'Todos os Navios' : `Azamara ${filters.ships.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}`}
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ export default function ResultFilter({ filters, setFilters }) {
                     <Users className="filter-icon" />
                     <div className="filter-content">
                         <div className="filter-label">Hóspedes</div>
-                        <div className="filter-value">{filters.guests}</div>
+                        <div className="filter-value">{filters.guests} </div>
                     </div>
                 </div>
 
