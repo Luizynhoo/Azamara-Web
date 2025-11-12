@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ItineraryPopup from '../../promocoes/funcionalidades/ItineraryPopup';
+import ItineraryMap from '../../ItineraryMap';
 import SidebarForm from '../../Promocoes/funcionalidades/Sidebarform';
 import './resultItems.css';
 
@@ -7,6 +8,7 @@ export default function ResultItems({ offer, index }) {
     const [selectedOffer, setSelectedOffer] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [popupOpen, setPopupOpen] = useState(false);
+    const [showMap, setShowMap] = useState(false);
 
     const openBudget = (offer) => {
         setSelectedOffer(offer);
@@ -59,10 +61,15 @@ export default function ResultItems({ offer, index }) {
                                     <span className="metadata-value">{offer.EmbarkPortName}</span>
                                 </div>
                             </div>
-
+                            
                             <button className="explore-button" onClick={() => openDetails(offer)}>
                                 Explore este itinerário
                             </button>
+                            {/*
+                            botão de mapa desativado temporariamente
+                            <button onClick={() => {setShowMap(true),openDetails(offer)}} className="explore-button">
+                                Explore este itinerário
+                            </button> */}
                         </div>
 
                         <div className="price-section">
@@ -91,6 +98,19 @@ export default function ResultItems({ offer, index }) {
                     </div>
                 </div>
             </div>
+
+            
+            {/* 
+            Componente de mapa desativado temporariamente
+
+            {showMap && (
+                <ItineraryMap
+                    offer={selectedOffer}
+                    onClose={() => setShowMap(false)}
+                />
+
+            )} */}
+            
             {selectedOffer && popupOpen && (
                 <ItineraryPopup
                     offer={selectedOffer}

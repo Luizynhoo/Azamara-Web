@@ -51,6 +51,15 @@
   transform: scale(1.05);
 }
 
+.azamara-includes{
+  background-attachment: fixed;
+}
+.azamara-includes img{
+  width: 250px;
+  margin-top: 20px;
+  height: auto;
+}
+
 @media (max-width: 1024px) {
   .hero-content {
     top: 21% !important;

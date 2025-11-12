@@ -1,7 +1,6 @@
 // components/Footer.jsx
-import React from 'react';
 import './Footer.css';
-import { FaFacebookF, FaInstagram, FaTiktok, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaEnvelope } from 'react-icons/fa';
 import Logo from "../../assets/Azamara-color.png"
 import R11 from "../../assets/R11.png"
 
@@ -24,14 +23,21 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="footer-section">
 
-      <div className="footer-links">
-        <a href="/protecao-seguranca">Proteção e Segurança</a>
-        <a href="/condicoes-gerais">Condições Gerais</a>
-        <a href="/contrato-compra">Contrato de Compra de Cruzeiro</a>
-        <a href="/informacoes-legais">Informações Legais</a>
-        <a href="/politica-privacidade">Política de Privacidade</a>
+        <div className="footer-links">
+          <h3>Documentos</h3>
+          <a href="/condicoes-gerais">Condições Gerais</a>
+          <a href="/politica-privacidade">Política de Privacidade</a>
+        </div>
+        <div className="footer-links">
+          <h3>Agentes de Viagem </h3>
+          <a href="https://manualdoagente.com.br/">Manual do Agente</a>
+          <a href="https://manualdoagente.com.br/seja-parceiro/">Seja Parceiro</a>
+          <a href="tel:+551130907200">Contato Agente de Viagem</a>
+        </div>
       </div>
+
 
       <div className="footer-bottom">
         <p>© 2025 R11 Travel. Todos os Direitos Reservados.</p>
@@ -45,5 +51,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-//Pegar os arquivos para colocar os redirecionamentos

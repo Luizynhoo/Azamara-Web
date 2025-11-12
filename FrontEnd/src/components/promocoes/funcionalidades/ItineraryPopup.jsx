@@ -48,7 +48,7 @@ export default function ItineraryPopup({ offer, onClose, onBudget }) {
         </table>
        
       </div>
-        <div className="itinerary-info"> <p>Itinerário sujeito a mudança sem prévio aviso</p></div>
+        <div className="itinerary-info"> <p>Itinerário sujeito a alteração sem prévio aviso</p></div>
 
         <div className="orcamento-container">
           <button className="orcamento-btn full" onClick={() => onBudget(offer)}>

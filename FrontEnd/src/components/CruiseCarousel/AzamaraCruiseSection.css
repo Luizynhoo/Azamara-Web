@@ -100,16 +100,19 @@
 }
 
 .rc-card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 40px 20px 30px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 20px 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .rc-card-title {
+  width: 200px;
   font-size: 1.5rem;
   font-weight: 800;
   margin: 0 0 8px;

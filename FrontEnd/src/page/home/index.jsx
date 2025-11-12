@@ -3,7 +3,7 @@ import "./Home.css";
 import CruiseOffersSection from "../../components/promocoes"
 import EuropeOffers from "../../components/promocoes/EuropeOffer/EuropeOffers";
 import AzamaraSection from "../../components/infos";
-import RoyalCruiseSection from "../../components/CruiseCarousel"
+import AzamaraCruiseSection from "../../components/CruiseCarousel"
 import DestinyCruiseSection from "../../components/DestinyCarousel"
 import Footer from "../../components/Footer"
 import StickyFooter from "../../components/StickyFooter"
@@ -35,7 +35,7 @@ export default function Home() {
       </section>
 
       <div className="CruiserCarousel">
-        <RoyalCruiseSection />
+        <AzamaraCruiseSection />
       </div>
 
       <section>
@@ -44,6 +44,9 @@ export default function Home() {
 
       <div className="DestintCarousel">
         <DestinyCruiseSection />
+        <div className="azamara-includes">
+          <img src="/public/azamara.png " />
+        </div>
       </div>
 
       <div className="infos">

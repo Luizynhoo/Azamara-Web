@@ -28,8 +28,8 @@ export default function Navbar({ customClass = "" }) {
             <li><a href="#quem-somos" onClick={() => setOpen(false)}>Quem Somos</a></li>
           </ul>
 
-          <button className="fale-conosco" onClick={() => setOpen(false)}>
-            Fale com um agente (11) 9999-9999
+          <button className="fale-conosco" onClick={() =>{ setOpen(false), window.location.href='tel:+5511999999999'}}>
+            Fale com nossos Concierges (11) 9999-9999
           </button>
         </div>
       </div>

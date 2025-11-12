@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import './RoyalCruiseSection.css';
+import './AzamaraCruiseSection.css';
 import AzamaraLogo from "../../assets/Azamara-White.png";
 import PursuitImg from "../../assets/Navios/Azamara-pursuit.webp"
 import JourneyImg from "../../assets/Navios/Azamara-journey.webp"
 import OnwardImg from "../../assets/Navios/Azamara-Onward.webp"
 import QuestImg from "../../assets/Navios/Azamara-Quest.webp"
 
-const RoyalCruiseSection = () => {
+const AzamaraCruiseSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
   const containerRef = useRef(null);
@@ -170,4 +170,4 @@ const RoyalCruiseSection = () => {
   );
 };
 
-export default RoyalCruiseSection;
+export default AzamaraCruiseSection;
