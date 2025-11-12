@@ -14,7 +14,7 @@ export default function ItineraryPopup({ offer, onClose, onBudget }) {
 
           <div className="itinerary-info">
             <p><Calendar size={16} /> {offer.departure}</p>
-            <p><Ship size={16} /> Azamara {offer.ship}</p>
+            <p><Ship size={16} /> Azamara {offer.ship.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}</p>
           </div>
         </div>
 
@@ -46,11 +46,13 @@ export default function ItineraryPopup({ offer, onClose, onBudget }) {
             ))}
           </tbody>
         </table>
+       
       </div>
+        <div className="itinerary-info"> <p>Itinerário sujeito a mudança sem prévio aviso</p></div>
 
         <div className="orcamento-container">
           <button className="orcamento-btn full" onClick={() => onBudget(offer)}>
-            SOLICITAR ORÇAMENTO
+            Solicite sua Reserva
           </button>
         </div>
       </div>

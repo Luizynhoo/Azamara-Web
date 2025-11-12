@@ -130,13 +130,11 @@
 }
 
 .metadata-value {
-  text-transform: capitalize !important;
   color: #6b7280;
 }
 
 .metadata-value span {
   color: #6b7280;
-  text-transform: capitalize !important;
 }
 
 
@@ -210,6 +208,7 @@
   cursor: pointer;
   transition: background-color 0.2s;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .booking-details {

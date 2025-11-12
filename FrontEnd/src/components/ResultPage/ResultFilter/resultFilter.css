@@ -1,14 +1,23 @@
 /* Filtros */
+
+.filter-container{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 .filters-card {
   max-width: 1280px;
   justify-content: space-around;
   align-items: center;
-  margin: 50px auto 0px;
+  margin: 10px auto 0px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 5px 10px;
 }
+
+
 
 .filters-grid {
   display: grid;
@@ -52,8 +61,60 @@
   color: #6b7280;
 }
 
+
+
+.tooltip-container {
+    position: relative;
+    left: 6px;
+    display: inline-block;
+    top: 3px;
+}
+.info-icon {
+  width: 14px;
+  height: 14px;
+  color: #888;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  max-width: 250px;
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 125%; /* sobe o balão acima do ícone */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  white-space: normal;
+  font-size: 12px;
+}
+
+/* Triângulo do balão */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* parte de baixo do balão */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Mostra o tooltip ao passar o mouse */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
 .filter-value {
-  text-transform: capitalize !important;
   font-weight: 500;
   font-size: 14px;
   color: #111827;

@@ -18,7 +18,7 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
         ? {
           id: offer.id,
           title: offer.title,
-          ship: offer.ship,
+          ship: `Azamara ${offer.ship}`,
           departure: offer.departure,
           price: offer.price,
           ports: offer.ports,
@@ -65,7 +65,7 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
               <div className="offer-grid">
                 <input
                   type="text"
-                  value={offer.ship}
+                  value={`Azamara ${offer.ship}`}
                   readOnly
                   className="readonly"
                   placeholder="Navio"
@@ -92,12 +92,13 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
               required
             />  
 
-            <input
-              type="text"
-              name="agencia"
-              placeholder="Você é uma agência ? *"
-              required
-            />  
+            <select name="tipoCliente" required>
+              <option value="" disabled selected>
+                Tipo de Cliente*
+              </option>
+              <option value="particular">Hóspede direto</option>
+              <option value="agencia">Agência de Viagens</option>
+            </select>
 
             <input
               type="email"

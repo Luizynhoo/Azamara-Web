@@ -27,9 +27,9 @@ export function useCruiseOffers() {
           title: o.ProductName,
           departure: formatDate(o.EmbarkDate),
           departureRaw: o.EmbarkDate, // Mantém data raw para filtros
-          ship: o.ShipName.toUpperCase(),
-          EmbarkPortName: o.EmbarkPortName || "N/A",
-          EmbarkDate: o.EmbarkDate,
+          ship: o.ShipName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
+          EmbarkPortName: o.EmbarkPortName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A",
+          EmbarkDate: o.EmbarkDate.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
           price: `R$ ${formatCurrency(o.TotalCruiseFare)}`,
           priceValue: o.TotalCruiseFare, // Para ordenação
           priceX: `R$ ${formatCurrency(o.TotalCruiseFare / 10)}`,

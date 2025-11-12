@@ -80,14 +80,17 @@ export default function CruiseBooking({ customClass = "" }) {
                     />
 
                     {/* Filtros */}
-                    <div className="filter-container">
-                        <ResultFilter filters={filters} setFilters={setFilters} />
-                    </div>
-
 
                     <div style={{ textAlign: 'center', marginTop: '1px', color: '#666' }}>
                         Mostrando {displayedOffers.length} de {sortedOffers.length} ofertas
                     </div>
+
+
+                    <div className="filter-container">
+                        <h3>Resultado de sua pesquisa</h3>
+                        <ResultFilter filters={filters} setFilters={setFilters} />
+                    </div>
+
 
                     {displayedOffers.length === 0 ? (
                         <div style={{ textAlign: 'center', padding: '50px' }}>

@@ -51,12 +51,12 @@ export default function ResultItems({ offer, index }) {
                                 <div className="metadata-item">
                                     <span className="metadata-label">A bordo do </span>
                                     <span className="metadata-value">
-                                        Azamara {offer.ship.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}
+                                        Azamara {offer.ship}
                                     </span>
                                 </div>
                                 <div className="metadata-item">
                                     <span className="metadata-label">Porto de Embarque:</span>
-                                    <span className="metadata-value">{offer.EmbarkPortName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}</span>
+                                    <span className="metadata-value">{offer.EmbarkPortName}</span>
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@ export default function ResultItems({ offer, index }) {
                             <div className="price-button">
 
                                 <button className="booking-button" onClick={() => openBudget(offer)}>
-                                    Solicitar Orçamento
+                                    Solicite sua Reserva
                                 </button>
 
                                 <div className="booking-details">

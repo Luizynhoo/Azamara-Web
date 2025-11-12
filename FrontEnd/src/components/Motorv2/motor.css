@@ -128,6 +128,24 @@ input.motor-datepicker:focus {
   padding: 12px !important;
 }
 
+.react-datepicker__month-text--today {
+  position: relative;
+}
+
+.react-datepicker__month-text--today::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--cor--detalhes);
+  border-radius: 50%;
+}
+
+
+
 .motor-button {
   background: var(--cor--button);
   padding: 14px 32px;
@@ -155,13 +173,17 @@ input.motor-datepicker:focus {
 }
 
 .react-datepicker__month-text:hover {
-  background: #0077b6 !important;
+  background: var(--cor--detalhes) !important;
   color: white !important;
 
 }
 
 .react-datepicker__header {
   color: white !important;
+}
+
+.react-datepicker__navigation{
+  height: 50px !important;
 }
 
 /* CALENDÁRIO PERSONALIZADO */

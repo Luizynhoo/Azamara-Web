@@ -1,4 +1,4 @@
-import { Ship, Calendar, Users, MapPin } from 'lucide-react';
+import { Ship, Calendar, Users, MapPin, Info } from 'lucide-react';
 import './resultFilter.css';
 export default function ResultFilter({ filters, setFilters }) {
     return (
@@ -32,9 +32,17 @@ export default function ResultFilter({ filters, setFilters }) {
 
                 <div className="filter-item">
                     <Users className="filter-icon" />
+
                     <div className="filter-content">
-                        <div className="filter-label">Hóspedes</div>
-                        <div className="filter-value">{filters.guests} </div>
+                        <div className="filter-label">
+                            Hóspedes
+                            <div className="tooltip-container">
+                                <Info className="info-icon" />
+                                <span className="tooltip-text">Valores exibidos para ocupação dupla. Para solicitar mais hóspedes informe na reserva ou entre em contato.</span>
+                            </div>
+                        </div>
+
+                        <div className="filter-value">{filters.guests}</div>
                     </div>
                 </div>
 
@@ -47,7 +55,8 @@ export default function ResultFilter({ filters, setFilters }) {
                     >
                         <option>Menor Preço</option>
                         <option>Maior Preço</option>
-                        <option>Duração</option>
+                        <option>Menor Duração</option>
+                        <option>Maior Duração</option>
                         <option>Data de Partida</option>
                     </select>
                 </div>

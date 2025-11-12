@@ -48,7 +48,7 @@ export default function OfferCard({ offer, onDetails, onBudget }) {
             MAIS DETALHES
           </button>
           <button className="orcamento-btn" onClick={() => onBudget(offer)}>
-            ORÇAMENTO
+            RESERVE
           </button>
         </div>
       </div>

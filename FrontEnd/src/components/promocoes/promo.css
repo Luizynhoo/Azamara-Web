@@ -209,6 +209,7 @@
 
   .orcamento-btn {
       background: var(--cor--button) !important;
+      text-transform: uppercase;
   }
 
   .itinerary-btn,
@@ -315,16 +316,15 @@
       animation: fadeIn 0.3s ease;
   }
 
-  .popup-contente {
-      position: relative;
-      max-width: 850px;
-      max-height: 700px;
-      height: 600px;
-      width: 100%;
-      background: #fff;
-      border-radius: 8px;
-      padding: 24px;
-  }
+.popup-contente {
+    position: relative;
+    max-width: 850px;
+    max-height: 700px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+}
 
   .popup-close {
       position: absolute;
@@ -361,7 +361,8 @@
   .itinerary-info p {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 9px;
+      margin-top: 20px;
       margin-bottom: 4px;
       color: #555;
   }
@@ -504,6 +505,7 @@
 
   /* Inputs */
   .sidebar-form input,
+  .sidebar-form select,
   .sidebar-form textarea {
       width: 100%;
       padding: 0.875rem;

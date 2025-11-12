@@ -66,7 +66,9 @@ export function useCruiseFilters(allOffers = [], initialFilter = {}) {
         return sorted.sort((a, b) => a.priceValue - b.priceValue);
       case "Maior Preço":
         return sorted.sort((a, b) => b.priceValue - a.priceValue);
-      case "Duração":
+      case "Menor Duração":
+        return sorted.sort((a, b) => a.nights - b.nights);
+      case "Maior Duração":
         return sorted.sort((a, b) => b.nights - a.nights);
       case "Data de Partida":
         return sorted.sort(

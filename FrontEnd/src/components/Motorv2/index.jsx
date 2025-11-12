@@ -98,7 +98,7 @@ export default function CruiseFormV2() {
   };
 
 
-   const handleDateChange = ([start, end]) => {
+  const handleDateChange = ([start, end]) => {
     if (start && end && start.getTime() === end.getTime()) {
       // Usuário clicou duas vezes no mesmo mês → selecionar o mês inteiro
       const firstDay = new Date(start.getFullYear(), start.getMonth(), 1);
@@ -116,7 +116,8 @@ export default function CruiseFormV2() {
         dataInicio: start,
         dataFim: end,
       }));
-    }}
+    }
+  }
 
   useEffect(() => {
     if (selectedNavio || selectedDestino || formData.dataInicio || formData.dataFim) {
@@ -241,7 +242,7 @@ export default function CruiseFormV2() {
                 showMonthYearPicker
                 minDate={minDate}
                 maxDate={maxDate}
-                
+                disabledKeyboardNavigation
               />
             </div>
           </div>
@@ -253,7 +254,7 @@ export default function CruiseFormV2() {
       </div>
       {openSpanClear && (
         <button onClick={handleClearFields} className="clear-dates-span">Limpar</button>
-        )}
+      )}
     </div>
   );
 }
