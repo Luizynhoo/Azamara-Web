@@ -1,5 +1,4 @@
 import Navbar from "../../components/navbar";
-import "./Home.css";
 import CruiseOffersSection from "../../components/promocoes"
 import EuropeOffers from "../../components/promocoes/EuropeOffer/EuropeOffers";
 import AzamaraSection from "../../components/infos";
@@ -7,10 +6,11 @@ import AzamaraCruiseSection from "../../components/CruiseCarousel"
 import DestinyCruiseSection from "../../components/DestinyCarousel"
 import Footer from "../../components/Footer"
 import StickyFooter from "../../components/StickyFooter"
-
+import AlwaysInclude from "../../components/AlwaysInclude";
 import bannerDesk from "../../assets/Banners/banner-Desktop-azamara.webp";
 import bannerMobile from "../../assets/Banners/banner-Mobile-azamara.webp";
 import CruiseFormV2 from "../../components/Motorv2";
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -27,31 +27,32 @@ export default function Home() {
           <h1>Cruzeiros Azamara Cruises</h1>
           <p>Viaje além do itinerário. Viva o destino.</p>
         </div>
-
         <CruiseFormV2 />
       </section>
+
       <section>
         <CruiseOffersSection />
       </section>
 
-      <div className="CruiserCarousel">
+      <section className="CruiserCarousel">
         <AzamaraCruiseSection />
-      </div>
+      </section>
 
       <section>
         <EuropeOffers />
       </section>
 
-      <div className="DestintCarousel">
+      <section className="DestintCarousel">
         <DestinyCruiseSection />
-        <div className="azamara-includes">
-          <img src="/public/azamara.png " />
-        </div>
-      </div>
+      </section>
 
-      <div className="infos">
+      <section className="infos">
         <AzamaraSection />
-      </div>
+      </section>
+
+      <section className="DestintCarousel">
+        <AlwaysInclude />
+      </section>
 
       <Footer />
       <StickyFooter />
