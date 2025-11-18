@@ -78,6 +78,13 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
                   placeholder="Embarque"
                 />
               </div>
+              <input
+                type="text"
+                value={`A partir de ${offer.price}`}
+                readOnly
+                className="readonly"
+                placeholder="Embarque"
+              />
             </div>
           )}
 
@@ -90,14 +97,14 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
               name="name"
               placeholder="Nome completo *"
               required
-            />  
+            />
 
             <select name="tipoCliente" required>
               <option value="" disabled selected>
                 Tipo de Cliente*
               </option>
-              <option value="particular">Hóspede direto</option>
-              <option value="agencia">Agência de Viagens</option>
+              <option value="particular">Sou Hóspede</option>
+              <option value="agencia">Sou Agência de Viagens</option>
             </select>
 
             <input
@@ -112,9 +119,19 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
               placeholder="Telefone com DDD *"
               required
             />
+            <input
+              type="number"
+              name="number"
+              placeholder="Número de hóspedes*"
+              max={4}
+              min={0}
+              minLength={0}
+              maxLength={4}
+              required
+            />
             <textarea
               name="message"
-              placeholder="Mensagem (opcional)"
+              placeholder="Informe os dados para reserva (opcional)"
               rows="3"
             />
           </div>

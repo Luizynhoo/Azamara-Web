@@ -150,7 +150,7 @@ const StickyFooter = () => {
             <button onClick={() => openPopup('email')} className="channel-item">
               <FaEnvelope />
               <div>
-                <strong>Atendimento por<br /> Email</strong>
+                <strong>Atendimento <br />por Email</strong>
               </div>
             </button>
           </div>
