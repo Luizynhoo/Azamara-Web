@@ -5,12 +5,11 @@ import { FaPhone, FaWhatsapp, FaEnvelope, FaTimes } from 'react-icons/fa';
 import Logo from "../../assets/Azamara-color.png";
 
 const StickyFooter = () => {
-  const [popup, setPopup] = useState(null); // 'phone', 'whatsapp', 'email', ou null
+  const [popup, setPopup] = useState(null); 
 
   const openPopup = (type) => setPopup(type);
   const closePopup = () => setPopup(null);
 
-  // === POPUP: TELEFONE ===
   const PhonePopup = () => (
     <div className="popup-overlay" onClick={closePopup}>
       <div className="popup-content" onClick={(e) => e.stopPropagation()}>
@@ -30,7 +29,6 @@ const StickyFooter = () => {
     </div>
   );
 
-  // === POPUP: WHATSAPP ===
   const WhatsAppPopup = () => {
     const [email, setEmail] = useState('');
     const [sent, setSent] = useState(false);
@@ -85,7 +83,6 @@ const StickyFooter = () => {
     );
   };
 
-  // === POPUP: E-MAIL ===
   const EmailPopup = () => {
     const [sent, setSent] = useState(false);
 
@@ -125,7 +122,6 @@ const StickyFooter = () => {
 
   return (
     <>
-      {/* STICKY FOOTER */}
       <div className="sticky-footer">
         <div className="sticky-container">
           <div className="sticky-brand">
@@ -157,7 +153,6 @@ const StickyFooter = () => {
         </div>
       </div>
 
-      {/* RENDERIZAÇÃO DOS POPUPS */}
       {popup === 'phone' && <PhonePopup />}
       {popup === 'whatsapp' && <WhatsAppPopup />}
       {popup === 'email' && <EmailPopup />}
