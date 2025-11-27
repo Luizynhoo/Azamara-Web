@@ -32,8 +32,8 @@ const Footer = () => {
 
         <div className="footer-links">
           <h3>Documentos</h3>
-          <a href="/condicoes-gerais">Condições Gerais</a>
-          <a href="/politica-privacidade">Política de Privacidade</a>
+          <a href="public/data/Condicoes-GeraisAzamara-Cruises.pdf" target='_blank'>Condições Gerais</a>
+          <a href="https://r11travel.com.br/politica-de-privacidade/">Política de Privacidade</a>
         </div>
         <div className="footer-links">
           <h3>Agentes de Viagem </h3>
