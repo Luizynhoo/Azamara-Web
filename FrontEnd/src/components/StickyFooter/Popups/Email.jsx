@@ -1,10 +1,11 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser"
+
 import { FaTimes } from "react-icons/fa";
+import {SendMailContact} from './../../../services/SendMail';
 
 
 
-export const EmailPopup = ({closePopup}) => {
+export const EmailPopup = ({ closePopup }) => {
     const [sent, setSent] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -25,22 +26,19 @@ export const EmailPopup = ({closePopup}) => {
         e.preventDefault();
         setLoading(true);
 
-        emailjs
-            .send(
-                "service_nnmi3fn",
-                "template_9b4sxwc",
-                formData,
-                "YHIeqCykoTz5ANg9R"
-            )
-            .then(() => {
-                setSent(true);
-            })
-            .catch((err) => {
-                console.error("Erro ao enviar email:", err);
-                alert("Ocorreu um erro ao enviar a mensagem. Tente novamente.");
-            })
-            .finally(() => setLoading(false));
-    };
+        try {
+            SendMailContact(formData)
+            setSent(true)
+        }
+        catch (err) {
+            console.error("Erro ao enviar email:", err);
+            alert("Ocorreu um erro ao enviar a mensagem. Tente novamente.");
+        }
+        finally {
+            setLoading(false)
+        };
+
+    }
 
     return (
         <div className="popup-overlay" onClick={closePopup}>

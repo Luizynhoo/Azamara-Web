@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import "../promo.css";
-import emailjs from "@emailjs/browser";
+import SendMailBudget from '../../../services/SendMail'
 
 export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
 
@@ -29,20 +29,15 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
       offer_ports: hasOffer ? offer.ports : "",
     };
 
-    emailjs.send(
-      "service_env4ecd",       
-      "template_kjh9pus", 
-      payload,
-      "UKMTk2rdYtNXzicbK"     
-    )
-      .then(() => {
+      try{
+        SendMailBudget(payload)
         alert("Orçamento solicitado com sucesso!");
         setSidebarOpen(false);
-      })
-      .catch((err) => {
-        console.error("Erro ao enviar email:", err);
+      }
+      catch(error){
+        console.error("Erro ao enviar email:", error);
         alert("Erro ao enviar seu orçamento. Tente novamente.");
-      });
+      }
   };
 
 
