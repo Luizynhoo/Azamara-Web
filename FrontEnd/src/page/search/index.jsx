@@ -84,10 +84,10 @@ export default function CruiseBooking({ customClass = "" }) {
                     </div>
 
                     <PromoBanner
-                        title="Promoção Novo Horizonte"
-                        subtitle1="+ Até R$ 500 de crédito a bordo*"
-                        subtitle2=""
-                        endDate="2025-12-08T23:59:59"
+                        title="Black Friday"
+                        subtitle1="Até U$4000 de desconto*"
+                        subtitle2="+ Até U$500 de crédito a bordo*"
+                        endDate="2025-12-03T01:59:59"
                     />
 
                     {/* Filtros */}

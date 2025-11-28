@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./PromoBanner.css";
 
-export default function PromoBanner({ title, subtitle1, subtitle2, endDate }) {
+export default function PromoBanner({ title, subtitle1, subtitle2, endDate, customClass }) {
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function PromoBanner({ title, subtitle1, subtitle2, endDate }) {
   if (timeLeft === null) return null;
 
   return (
-    <div className="promo-banner-lp">
+    <div className={`promo-banner-lp ${customClass}`}>
       <h2 className="promo-title">{title}</h2>
       <p className="promo-sub">{subtitle1}</p>
       <p className="promo-sub">{subtitle2}</p>

@@ -7,10 +7,12 @@ import DestinyCruiseSection from "../../components/DestinyCarousel"
 import Footer from "../../components/Footer"
 import StickyFooter from "../../components/StickyFooter"
 import AlwaysInclude from "../../components/AlwaysInclude";
-import bannerDesk from "../../assets/Banners/banner-Desktop-azamara.webp";
+import bannerDesk from "../../assets/Banners/banner-Desktop-azamara-v2.webp";
 import bannerMobile from "../../assets/Banners/banner-Mobile-azamara.webp";
 import CruiseFormV2 from "../../components/Motorv2";
+import PromoBanner from "../../components/ResultPage/PromoBanner";
 import "./home.css";
+
 
 export default function Home() {
   return (
@@ -24,8 +26,15 @@ export default function Home() {
         </picture>
 
         <div className="hero-content">
-          <h1>Cruzeiros Azamara Cruises</h1>
-          <p>Viaje além do itinerário. Viva o destino.</p>
+          {/* <h1>Cruzeiros Azamara Cruises</h1>
+          <p>Viaje além do itinerário. Viva o destino.</p> */}
+          <PromoBanner
+            title="Black Friday"
+            subtitle1="Até U$4000 de desconto*"
+            subtitle2="+ Até U$500 de crédito a bordo*"
+            endDate="2025-12-03T01:59:59"
+            customClass="home"
+          />
         </div>
         <CruiseFormV2 />
       </section>
