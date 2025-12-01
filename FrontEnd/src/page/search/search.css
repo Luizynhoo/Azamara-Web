@@ -37,6 +37,7 @@
 
 .motor-result .motor-wrapper{
   margin-top: 1px !important;
+  display: none !important;
 }
 
 /* ===== Navbar ===== */
