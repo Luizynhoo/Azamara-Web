@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+# Permite acesso normal ao index e arquivos reais
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona qualquer rota desconhecida para o React
+RewriteRule . /index.html [L]
+ 
