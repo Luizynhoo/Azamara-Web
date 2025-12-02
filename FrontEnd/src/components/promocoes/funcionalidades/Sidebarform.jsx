@@ -1,10 +1,13 @@
 import { X } from "lucide-react";
 import "../promo.css";
 import {SendMailBudget} from '../../../services/SendMail'
+import { useToast } from "../../../utils/Toast/ToastContext";
 
 export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
 
+  const { showToast } = useToast();
   if (!sidebarOpen) return null;
+
 
   const hasOffer = offer && offer.id;
 
@@ -31,12 +34,12 @@ export default function SidebarForm({ sidebarOpen, setSidebarOpen, offer }) {
 
       try{
         SendMailBudget(payload)
-        alert("Orçamento solicitado com sucesso!");
+        showToast('Operação realizada com sucesso!', 'success');
         setSidebarOpen(false);
       }
       catch(error){
         console.error("Erro ao enviar email:", error);
-        alert("Erro ao enviar seu orçamento. Tente novamente.");
+        showToast('Erro ao enviar seu orçamento. Tente novamente.', 'error');
       }
   };
 

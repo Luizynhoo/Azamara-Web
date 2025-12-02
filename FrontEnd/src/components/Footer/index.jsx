@@ -4,6 +4,7 @@ import Logo from "../../assets/Azamara-color.png"
 import R11 from "../../assets/R11.png"
 import { PoliticaPrivacidadePopup } from './Popup/PoliticaPrivacidadePopup';
 import { useState } from 'react';
+import { NewsletterForm } from './FormSubscribe';
 
 const Footer = () => {
 
@@ -11,7 +12,6 @@ const Footer = () => {
 
   const openPopup = (type) => setPopup(type);
   const closePopup = () => setPopup(null);
-
 
   return (
     <>
@@ -32,10 +32,12 @@ const Footer = () => {
               />
             </div>
           </div>
-          {/* <div className="footer-contact">
-            <h5>Receba as Melhores Ofertas</h5>
-            <input type="text" className="input-email" placeholder='Seu Email' />
-          </div> */}
+          <div className="footer-contact">
+            <div className="subscribe-wrapper">
+              <h5>Receba as Melhores Ofertas</h5>
+                <NewsletterForm />
+            </div>
+          </div>
 
         </div>
         <div className="footer-section">

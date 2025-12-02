@@ -4,19 +4,19 @@ const SendMailContact = ( formData )=> {
 
     emailjs
         .send(
-            "service_nnmi3fn",
-            "template_9b4sxwc",
+            import.meta.env.VITE_SERVICE_EMAIL_CONTACT_KEY,
+            import.meta.env.VITE_TEMPLATE_EMAIL_CONTACT_KEY,
             formData,
-            "YHIeqCykoTz5ANg9R"
+            import.meta.env.VITE_PUBLIC_KEY_EMAIL_CONTACT
         )
 };
 
 const SendMailBudget = ( formData )=> {
     emailjs.send(
-        "service_env4ecd",
-        "template_kjh9pus",
+        import.meta.env.VITE_SERVICE_EMAIL_BUDGET_KEY,
+        import.meta.env.VITE_TEMPLATE_EMAIL_BUDGET_KEY,
         formData,
-        "UKMTk2rdYtNXzicbK"
+        import.meta.env.VITE_PUBLIC_KEY_EMAIL_BUDGET
     )
 }
 
