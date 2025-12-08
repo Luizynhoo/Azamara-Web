@@ -15,6 +15,7 @@ export function useCruiseOffers() {
 
         console.log(data);
 
+        
         const now = new Date();
         const valid = data.value
           .filter((o) => new Date(o.embarkDate) > now)
