@@ -13,31 +13,34 @@ export function useCruiseOffers() {
         setLoading(true);
         const data = await getCruises();
 
+        console.log(data);
+
         const now = new Date();
-        const valid = data
-          .filter((o) => o.Available === "OK" && new Date(o.EmbarkDate) > now)
-          .sort((a, b) => a.TotalCruiseFare - b.TotalCruiseFare);
+        const valid = data.value
+          .filter((o) => new Date(o.embarkDate) > now)
+          .sort((a, b) => a.cruiseFare - b.cruiseFare);
 
         const mapped = valid.map((o) => ({
-          id: o.ProductId,
-          code: o.ProductId,
-          image: o.ImageBackground,
-          category: o.Destination.toUpperCase(),
-          title: o.ProductName,
-          departure: formatDate(o.EmbarkDate),
-          departureRaw: o.EmbarkDate, // Mantém data raw para filtros
-          ship: o.ShipName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
-          EmbarkPortName: o.EmbarkPortName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A",
-          EmbarkDate: o.EmbarkDate.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
-          price: `R$ ${formatCurrency(o.TotalCruiseFare)}`,
-          priceValue: o.TotalCruiseFare, // Para ordenação
-          priceX: `R$ ${formatCurrency(o.TotalCruiseFare / 10)}`,
+          id: o.id,
+          code: o.productId,
+          category: o.destination.toUpperCase(),
+          ship: o.shipName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
+          title: o.productName,
+          departure: formatDate(o.embarkDate),
+          departureRaw: o.embarkDate, // Mantém data raw para filtros
+          EmbarkDate: o.embarkDate.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
+          price: `R$ ${formatCurrency(o.cruiseFare)}`,
+          priceValue: o.cruiseFare, // Para ordenação
+          priceX: `R$ ${formatCurrency(o.cruiseFare / 10)}`,
           installments: "Em 10x de",
           discount: "SEM ENTRADA",
           taxes: "Sem entrada e em até 10x sem juros",
-          ports: o.ItineraryPortNames,
-          itinerary: o.Itinerary,
-          nights: o.Duration
+          nights: o.duration,
+
+          // image: o.ImageBackground,
+          // EmbarkPortName: o.EmbarkPortName.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A",
+          // ports: o.ItineraryPortNames,
+          // itinerary: o.Itinerary
         }));
 
         setAllOffers(mapped);
@@ -50,7 +53,7 @@ export function useCruiseOffers() {
     };
 
     fetchOffers();
-  }, []); 
+  }, []);
 
   return { allOffers, loading, error };
 }
