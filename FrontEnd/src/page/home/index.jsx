@@ -7,7 +7,7 @@ import DestinyCruiseSection from "../../components/DestinyCarousel"
 import Footer from "../../components/Footer"
 import StickyFooter from "../../components/StickyFooter"
 import AlwaysInclude from "../../components/AlwaysInclude";
-import bannerDesk from "../../assets/Banners/banner-Desktop-azamara-v2.webp";
+import bannerDesk from "../../assets/Banners/Banner Azamara Desktop_1600x850.jpg";
 import bannerMobile from "../../assets/Banners/banner-Mobile-azamara.webp";
 import CruiseFormV2 from "../../components/Motorv2";
 import PromoBanner from "../../components/ResultPage/PromoBanner";
